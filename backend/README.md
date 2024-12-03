@@ -128,6 +128,7 @@ This endpoint authenticates existing users by validating their email and passwor
 #### Error Responses
 
 - **400 Bad Request**: When validation fails
+
   ```json
   {
     "errors": [
@@ -157,3 +158,70 @@ curl -X POST \
     "email": "john.doe@example.com",
     "password": "securepassword123"
   }'
+
+```
+
+## User Profile
+
+### Endpoint
+
+```
+GET /api/users/profile
+```
+
+### Description
+
+This endpoint retrieves the profile information of the currently authenticated user.
+
+### Authentication
+
+Requires a valid JWT token in the request header or cookies.
+
+### Response
+
+#### Success Response (200 OK)
+
+```json
+{
+  "fullname": {
+    "firstname": "string",
+    "lastname": "string"
+  },
+  "email": "string",
+  "_id": "string"
+}
+```
+
+#### Error Response
+
+- **401 Unauthorized**: When no token is provided or token is invalid
+
+## User Logout
+
+### Endpoint
+
+```
+GET /api/users/logout
+```
+
+### Description
+
+This endpoint logs out the currently authenticated user by invalidating their token. The token is added to a blacklist and will no longer be valid for authentication.
+
+### Authentication
+
+Requires a valid JWT token in the request header or cookies.
+
+### Response
+
+#### Success Response (200 OK)
+
+```json
+{
+  "message": "Logout successful"
+}
+```
+
+#### Error Response
+
+- **401 Unauthorized**: When no token is provided or token is invalid
