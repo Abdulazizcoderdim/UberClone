@@ -3,7 +3,6 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const connectToDB = require('./db/db');
-const userRoutes = require('./routes/user.routes');
 const cookieParser = require('cookie-parser');
 
 // Connect to MongoDB
@@ -20,6 +19,7 @@ app.get('/', (req, res) => {
 });
 
 // Routes
-app.use('/api/users', userRoutes);
+app.use('/api/users', require('./routes/user.routes'));
+app.use('/api/captains', require('./routes/captain.routes'));
 
 module.exports = app;
