@@ -225,3 +225,28 @@ Requires a valid JWT token in the request header or cookies.
 #### Error Response
 
 - **401 Unauthorized**: When no token is provided or token is invalid
+
+## Captain Routes
+
+### Register Captain
+
+- **Endpoint:** `/api/captains/register`
+- **Description:** Register a new captain in the system.
+- **Request Body:**
+
+```json
+{
+  "fullname": {
+    "firstname": "string",
+    "lastname": "string"
+  },
+  "email": "string",
+  "password": "string",
+  "vehicle": {
+    "color": "string",
+    "plate": "string",
+    "capacity": "integer",
+    "vehicleType": "string"
+  }
+}
+```
