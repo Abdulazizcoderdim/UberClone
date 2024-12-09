@@ -250,3 +250,14 @@ Requires a valid JWT token in the request header or cookies.
   }
 }
 ```
+
+### Required Fields
+
+- `fullname.firstname`: Captain's first name
+- `fullname.lastname`: Captain's last name
+- `email`: Valid email address
+- `password`: Captain's password
+- `vehicle.color`: Vehicle color
+- `vehicle.plate`: Vehicle plate
+- `vehicle.capacity`: Vehicle capacity
+- `vehicle.vehicleType`: Vehicle type
