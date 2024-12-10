@@ -7,7 +7,7 @@ import UserSignup from './pages/user-signup';
 
 const App = () => {
   return (
-    <div>
+    <div className="max-w-sm mx-auto">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<UseerLogin />} />
