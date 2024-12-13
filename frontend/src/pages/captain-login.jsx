@@ -7,18 +7,20 @@ const CaptainLogin = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
-  const [userData, setUserData] = useState({});
+  const [captainData, setCaptainData] = useState({});
 
   const onSubmit = data => {
     console.log(data);
-    setUserData(data);
+    setCaptainData(data);
+    reset();
   };
 
   return (
     <div className="p-7 flex flex-col justify-between h-screen">
       <div>
-        <img className="w-16 mb-10" src="uber-logo.png" alt="logo" />
+        <img className="w-16 mb-10" src="uber-driver.svg" alt="logo" />
 
         <form onSubmit={handleSubmit(onSubmit)}>
           <h3 className="text-lg font-medium mb-2">
@@ -72,7 +74,7 @@ const CaptainLogin = () => {
 
         <p className="text-center">
           Join a fleet?{' '}
-          <Link className="text-[#10b461] hover:underline" to="/signup">
+          <Link className="text-[#10b461] hover:underline" to="/captain-signup">
             Register as a Captain
           </Link>
         </p>
