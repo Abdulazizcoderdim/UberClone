@@ -20,10 +20,18 @@ const UseerLogin = () => {
   return (
     <div className="p-7 flex flex-col justify-between h-screen">
       <div>
-        <img className="w-16 mb-10" src="uber-logo.png" alt="logo" />
+        <img className="w-16 mb-3" src="uber-logo.png" alt="logo" />
 
+        <div>
+          <h2 className="text-[#1C160C] tracking-light text-[28px] font-bold leading-tight px-4 text-center pb-3 pt-5">
+            Welcome Back!
+          </h2>
+          <p className="text-[#1C160C] text-base font-normal leading-normal pb-3 pt-1 px-4 text-center">
+            Please log in to continue.
+          </p>
+        </div>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <h3 className="text-lg font-medium mb-2">
+          <h3 className="text-[#1C160C] text-base font-medium leading-normal pb-2">
             What&apos;s your email address?
           </h3>
           <div className="mb-7">
@@ -35,7 +43,7 @@ const UseerLogin = () => {
               })}
               name="email"
               id="email"
-              className="bg-[#eeeeee] rounded px-4 py-2 border w-full text-lg placeholder:text-base"
+              className="bg-[#eeeeee] rounded-lg px-4 py-2 border w-full text-lg placeholder:text-base"
               type="email"
               required
               placeholder="example@example.com"
@@ -44,7 +52,9 @@ const UseerLogin = () => {
               <p className="text-red-500 text-xs">Invalid email address</p>
             )}
           </div>
-          <h3 className="text-lg font-medium mb-2">Enter your password</h3>
+          <h3 className="text-[#1C160C] text-base font-medium leading-normal pb-2">
+            Enter your password
+          </h3>
           <div className="mb-7">
             <input
               {...register('password', {
@@ -52,7 +62,7 @@ const UseerLogin = () => {
                 minLength: 6,
                 message: 'Password must be at least 6 characters long',
               })}
-              className="bg-[#eeeeee] rounded px-4 py-2 border w-full text-lg placeholder:text-base"
+              className="bg-[#eeeeee] rounded-lg px-4 py-2 border w-full text-lg placeholder:text-base"
               type="password"
               required
               placeholder="password"
@@ -66,7 +76,7 @@ const UseerLogin = () => {
           </div>
           <button
             type="submit"
-            className="bg-black mb-3 hover:bg-black/80 w-full font-semibold text-white py-2 text-lg rounded"
+            className="bg-black mb-3 hover:bg-black/80 w-full font-semibold text-white py-2 text-lg rounded-full"
           >
             Login
           </button>
@@ -83,7 +93,7 @@ const UseerLogin = () => {
       <div className="">
         <Link
           to="/captain-login"
-          className="flex items-center justify-center bg-[#10b461] mb-5 hover:bg-black/80 w-full font-semibold text-white py-2 text-lg rounded"
+          className="flex items-center justify-center bg-[#10b461] mb-5 hover:bg-black/80 w-full font-semibold text-white py-2 text-lg rounded-full"
         >
           Sign in as Captain
         </Link>
