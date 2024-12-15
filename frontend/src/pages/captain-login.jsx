@@ -17,6 +17,8 @@ const CaptainLogin = () => {
     reset();
   };
 
+  console.log(captainData)
+
   return (
     <div className="p-7 flex flex-col justify-between h-screen">
       <div>

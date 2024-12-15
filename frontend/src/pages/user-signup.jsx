@@ -17,6 +17,8 @@ const UserSignup = () => {
     reset();
   };
 
+  console.log(userData);
+
   return (
     <div className="p-7 flex flex-col justify-between h-screen">
       <div>
@@ -77,7 +79,7 @@ const UserSignup = () => {
             type="submit"
             className="bg-black mb-3 hover:bg-black/80 w-full font-semibold text-white py-2 text-lg rounded"
           >
-            Sign up
+            Create account
           </button>
         </form>
 
@@ -89,13 +91,12 @@ const UserSignup = () => {
         </p>
       </div>
 
-      <div className="">
-        <Link
-          to="/login"
-          className="flex items-center justify-center bg-[#d5622d] mb-5 hover:bg-black/80 w-full font-semibold text-white py-2 text-lg rounded"
-        >
-          Sign in as User
-        </Link>
+      <div>
+        <p className="text-[10px] leading-tight">
+          This site is protected by reCAPTCHA and the{' '}
+          <span className="underline">Google Privacy Policy</span> and{' '}
+          <span className="underline">Terms of Service apply</span>.
+        </p>
       </div>
     </div>
   );
