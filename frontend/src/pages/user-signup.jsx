@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { UserDataContext } from '../context/user-context';
+import $axios from '../http';
 
 const UserSignup = () => {
   const {
@@ -9,15 +11,26 @@ const UserSignup = () => {
     formState: { errors },
     reset,
   } = useForm();
-  const [userData, setUserData] = useState({});
+  const { user, setUser } = useContext(UserDataContext);
+  const navigate = useNavigate();
 
-  const onSubmit = data => {
-    console.log(data);
-    setUserData(data);
+  const onSubmit = async data => {
+    try {
+      const res = await $axios.post('/users/register', data);
+
+      if (res.status === 201) {
+        const data = res.data;
+        setUser(data.user);
+        navigate('/home');
+      }
+
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+
     reset();
   };
-
-  console.log(userData);
 
   return (
     <div className="p-7 flex flex-col justify-between h-screen">
