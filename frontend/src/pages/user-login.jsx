@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { UserDataContext } from '../context/user-context';
+import $axios from '../http';
 
 const UseerLogin = () => {
   const {
@@ -10,9 +12,19 @@ const UseerLogin = () => {
   } = useForm();
   const [userData, setUserData] = useState({});
 
-  const onSubmit = data => {
+  const { user, setUser } = useContext(UserDataContext);
+  const navigate = useNavigate();
+
+  const onSubmit = async data => {
     console.log(data);
-    setUserData(data);
+
+    const res = await $axios.post('/users/login', data);
+
+    if (res.status === 200) {
+      const data = res.data;
+      setUser(data.user);
+      navigate('/home');
+    }
   };
 
   console.log(errors);
