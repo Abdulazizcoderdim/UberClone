@@ -1,8 +1,8 @@
-import { useContext } from 'react';
-import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
-import { UserDataContext } from '../context/user-context';
-import $axios from '../http';
+import { useContext } from "react";
+import { useForm } from "react-hook-form";
+import { Link, useNavigate } from "react-router-dom";
+import { UserDataContext } from "../context/user-context";
+import $axios from "../http";
 
 const UserSignup = () => {
   const {
@@ -14,15 +14,15 @@ const UserSignup = () => {
   const { user, setUser } = useContext(UserDataContext);
   const navigate = useNavigate();
 
-  const onSubmit = async data => {
+  const onSubmit = async (data) => {
     try {
-      const res = await $axios.post('/users/register', data);
-
+      const res = await $axios.post("/users/register", data);
+      console.log(res);
       if (res.status === 201) {
         const data = res.data;
         setUser(data.user);
-        localStorage.setItem('token', data.token);
-        navigate('/home');
+        localStorage.setItem("token", data.token);
+        navigate("/home");
       }
 
       console.log(res);
@@ -42,7 +42,7 @@ const UserSignup = () => {
           <h3 className="text-base font-medium">What&apos;s your name?</h3>
           <div className="flex gap-4 mb-4">
             <input
-              {...register('fullname.firstname', { required: true })}
+              {...register("fullname.firstname", { required: true })}
               type="text"
               className="bg-[#eeeeee] w-1/2 rounded px-4 py-2 border text-base placeholder:text-sm"
               required
@@ -50,7 +50,7 @@ const UserSignup = () => {
             />
             <input
               type="text"
-              {...register('fullname.lastname', { required: true })}
+              {...register("fullname.lastname", { required: true })}
               className="bg-[#eeeeee] w-1/2 rounded px-4 py-2 border text-base placeholder:text-sm"
               placeholder="Last Name"
             />
@@ -61,10 +61,10 @@ const UserSignup = () => {
           </h3>
           <div className="mb-5">
             <input
-              {...register('email', {
+              {...register("email", {
                 required: true,
                 pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                message: 'Invalid email address',
+                message: "Invalid email address",
               })}
               className="bg-[#eeeeee] rounded px-4 py-2 border w-full text-base placeholder:text-sm"
               required
@@ -77,7 +77,7 @@ const UserSignup = () => {
           <h3 className="text-base font-medium mb-2">Enter your password</h3>
           <div className="mb-5">
             <input
-              {...register('password', { required: true, minLength: 6 })}
+              {...register("password", { required: true, minLength: 6 })}
               className="bg-[#eeeeee] rounded px-4 py-2 border w-full text-base placeholder:text-sm"
               required
               placeholder="password"
@@ -98,7 +98,7 @@ const UserSignup = () => {
         </form>
 
         <p className="text-center">
-          Already have a account?{' '}
+          Already have a account?{" "}
           <Link className="text-[#10b461] hover:underline" to="/login">
             Login here
           </Link>
@@ -107,8 +107,8 @@ const UserSignup = () => {
 
       <div>
         <p className="text-[10px] leading-tight">
-          This site is protected by reCAPTCHA and the{' '}
-          <span className="underline">Google Privacy Policy</span> and{' '}
+          This site is protected by reCAPTCHA and the{" "}
+          <span className="underline">Google Privacy Policy</span> and{" "}
           <span className="underline">Terms of Service apply</span>.
         </p>
       </div>

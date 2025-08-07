@@ -16,8 +16,6 @@ const UseerLogin = () => {
   const navigate = useNavigate();
 
   const onSubmit = async (data) => {
-    console.log(data);
-
     const res = await $axios.post("/users/login", data);
     console.log(res.response.data.message);
 
