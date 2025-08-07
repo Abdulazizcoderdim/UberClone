@@ -1,8 +1,8 @@
-import { useContext, useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
-import { UserDataContext } from '../context/user-context';
-import $axios from '../http';
+import { useContext, useState } from "react";
+import { useForm } from "react-hook-form";
+import { Link, useNavigate } from "react-router-dom";
+import { UserDataContext } from "../context/user-context";
+import $axios from "../http";
 
 const UseerLogin = () => {
   const {
@@ -15,15 +15,17 @@ const UseerLogin = () => {
   const { user, setUser } = useContext(UserDataContext);
   const navigate = useNavigate();
 
-  const onSubmit = async data => {
+  const onSubmit = async (data) => {
     console.log(data);
 
-    const res = await $axios.post('/users/login', data);
+    const res = await $axios.post("/users/login", data);
+    console.log(res.response.data.message);
 
     if (res.status === 200) {
       const data = res.data;
       setUser(data.user);
-      navigate('/home');
+      localStorage.setItem("token", data.token);
+      navigate("/home");
     }
   };
 
@@ -48,10 +50,10 @@ const UseerLogin = () => {
           </h3>
           <div className="mb-7">
             <input
-              {...register('email', {
+              {...register("email", {
                 required: true,
                 pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                message: 'Invalid email address',
+                message: "Invalid email address",
               })}
               name="email"
               id="email"
@@ -69,10 +71,10 @@ const UseerLogin = () => {
           </h3>
           <div className="mb-7">
             <input
-              {...register('password', {
+              {...register("password", {
                 required: true,
                 minLength: 6,
-                message: 'Password must be at least 6 characters long',
+                message: "Password must be at least 6 characters long",
               })}
               className="bg-[#eeeeee] rounded-lg px-4 py-2 border w-full text-lg placeholder:text-base"
               type="password"
@@ -95,7 +97,7 @@ const UseerLogin = () => {
         </form>
 
         <p className="text-center">
-          New Here?{' '}
+          New Here?{" "}
           <Link className="text-[#10b461] hover:underline" to="/signup">
             Create new Account
           </Link>
